@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <link rel="stylesheet" href="vendors/bootstrap.css">
+
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <script src="./vendors/jquery-3.4.1.min copy.js"></script>
+    <script src="./vendors/bootstrap.js"></script>
+    <script src="./scripts/client.js"></script>
+
+
+</head>
+<body>
+    <header>
+        <h1 class="m-4">Calculator</h1>
+    </header>
+    <div id="input" class="m-3">
+        <input type="number" id="firstNumber" placeholder="First Number">
+        <button id="additionBtn" class="mathBtn" data-symbol="+">+</button>
+        <button id="subtractionBtn" class="mathBtn" data-symbol="-">-</button>
+        <button id="multiplicationBtn" class="mathBtn" data-symbol="*">*</button>
+        <button id="divisionBtn" class="mathBtn" data-symbol="/">/</button>
+        <input type="number" id="secondNumber" placeholder="Second Number">
+        <button id="equalsBtn" class="mathBtn">=</button>
+        <button id="clearBtn" class="mathBtn">C</button>
+    </div>
+    <div id="answerDiv">
+        <h2 id="answerH2" class="m-4"><!-- populated by Jquery --></h2>
+    </div>
+    <div id="history">
+        <h2 class="m-4">History</h2>
+        <div id="historyDiv" class="m-3">
+            <!-- populated by Jquery -->
+        </div>
+    </div>
+</body>
+</html>
