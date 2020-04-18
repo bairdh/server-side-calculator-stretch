@@ -1,50 +1,59 @@
 
 $(document).ready(readyNow);
 
-let firstNumber;
-let secondNumber;
-let symbol = '';
+let totalNum;
+
+// creating object to send to sever
+let calculations = {
+    first: '',
+    second: '',
+    symbol: '',
+    total: '',
+    history: []
+}
+
 
 function readyNow(){
 
-    // on click + - * /
-    $('#additionBtn').on('click', getFirstInput);
-    $('#subtractionBtn').on('click', getFirstInput);
-    $('#multiplicationBtn').on('click', getFirstInput);
-    $('#divisionBtn').on('click', getFirstInput);
-
     // on click =
-    $('#equalsBtn').on('click', sendInputs);
+    $('#equals').on('click', sendInputs);
 
     // on click clear
     $('#clearBtn').on('click', clearInputs);
 
+    // on click num buttons
+    $('#zero').on('click', collectNumbers);
+    $('#one').on('click', collectNumbers);
+    $('#two').on('click', collectNumbers);
+    $('#three').on('click', collectNumbers);
+    $('#four').on('click', collectNumbers);
+    $('#five').on('click', collectNumbers);
+    $('#six').on('click', collectNumbers);
+    $('#seven').on('click', collectNumbers);
+    $('#eight').on('click', collectNumbers);
+    $('#nine').on('click', collectNumbers);
+    $('#dot').on('click', collectNumbers);
+
+    // on click symbols
+    $('#plus').on('click', setSymbol);
+    $('#minus').on('click', setSymbol);
+    $('#times').on('click', setSymbol);
+    $('#divide').on('click', setSymbol);
+
     getAnswer();
 
 }
-// getting the value of the first input and symbol
-function getFirstInput(){
-    firstNumber = $('#firstNumber').val();
-    symbol = this.getAttribute('data-symbol'); 
-}
+
 // getting the value of the second input and making an object from the 
 // inputs and symbol to send to the server side with an AJAX call
 function sendInputs(){
-    secondNumber = $('#secondNumber').val();
+    calculations.second = $('#secondNumberDiv').text();
     
     //clearing inputs 
-    $('#firstNumber').val('');
-    $('#secondNumber').val('');
+    $('#firstNumberDiv').text('');
+    $('#secondNumberDiv').text('');
 
-    // creating object to send to sever
-    let calculations = {
-        first: firstNumber,
-        second: secondNumber,
-        symbol: symbol,
-        total: '',
-        history: []
-    }
-
+   
     // making a POST request to send data to server
     $.ajax({
         type:'POST',
@@ -60,6 +69,11 @@ function sendInputs(){
         console.log(err);
         
     })
+
+    console.log(calculations);
+
+    clearInputs();
+    
 }
 
 // AJAX call to th server to get the history array with all the 
@@ -79,13 +93,15 @@ function getAnswer(){
 
 // clears the inputs and zeros out the number and symbol values
 function clearInputs(){
-    firstNumber = '';
-    secondNumber = '';
-    symbol = '';
+    $('#firstNumberDiv').text('');
+    $('#secondNumberDiv').text('');
 
-    $('#firstNumber').val('');
-    $('#secondNumber').val('');
+    calculations.first = '';
+    calculations.second = '';
+    calculations.symbol = '';
 
+    console.log(`IN clearInputs ${calculations.total}`);
+    
 }
 
 // displays on DOM
@@ -100,3 +116,35 @@ function displayOnDOM(history){
     }
 
 }
+
+function collectNumbers(){
+    if(totalNum === undefined){
+        totalNum = '';
+    }
+    totalNum += this.getAttribute('data-number');
+
+    if (calculations.symbol === ''){
+        $('#firstNumberDiv').text(totalNum);
+    }
+    else if (calculations.symbol !== ''){
+        $('#secondNumberDiv').text(totalNum);
+    }
+}
+
+function setSymbol(){
+    symbol = this.getAttribute('data-symbol');
+
+    calculations.first = $('#firstNumberDiv').text();
+    calculations.symbol = symbol;
+
+    totalNum = '';
+    symbol = ''
+}
+
+// [x] have one number
+// [x] add nums as clicked
+// [x] on click of symbol add total num and symbol to obj
+// [x] clear total num
+// [x] add nums as clicked
+// [x] on click of = add second num total to obj
+// [x] then send obj off

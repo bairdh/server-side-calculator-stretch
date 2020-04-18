@@ -20,17 +20,42 @@
         <h1 class="m-4">Calculator</h1>
     </header>
     <div id="input" class="m-3">
-        <input type="number" id="firstNumber" placeholder="First Number">
-        <button id="additionBtn" class="mathBtn" data-symbol="+">+</button>
-        <button id="subtractionBtn" class="mathBtn" data-symbol="-">-</button>
-        <button id="multiplicationBtn" class="mathBtn" data-symbol="*">*</button>
-        <button id="divisionBtn" class="mathBtn" data-symbol="/">/</button>
-        <input type="number" id="secondNumber" placeholder="Second Number">
-        <button id="equalsBtn" class="mathBtn">=</button>
-        <button id="clearBtn" class="mathBtn">C</button>
+        <div id="firstNumberDiv"></div>
+        <div id="secondNumberDiv"></div>
+        <input type="text" id="firstNumber" name="firstNumber" placeholder="First Number">
+        <input type="text" id="secondNumber" name="secondNumber" placeholder="Second Number">
+        <button id="clearBtn" class="btn btn-secondary">C</button>
     </div>
     <div id="answerDiv">
-        <h2 id="answerH2" class="m-4"><!-- populated by Jquery --></h2>
+        <h2 id="answerH2" class="m-4">
+            <!-- populated by Jquery -->
+        </h2>
+    </div>
+    <div id="numButtons" class="m-5">
+        <div class="row"> <!--Row 7 8 9 + -->
+            <div id="seven" class="btn btn-secondary m-1" data-number="7">7</div>
+            <div id="eight" class="btn btn-secondary m-1" data-number="8">8</div>
+            <div id="nine" class="btn btn-secondary m-1" data-number="9">9</div>
+            <div id="plus" class="btn btn-secondary m-1" data-symbol="+">+</div>
+        </div>
+        <div class="row"> <!--Row 4 5 6 - -->
+            <div id="four" class="btn btn-secondary m-1" data-number="4">4</div>
+            <div id="five" class="btn btn-secondary m-1" data-number="5">5</div>
+            <div id="six" class="btn btn-secondary m-1" data-number="6">6</div>
+            <div id="minus" class="btn btn-secondary m-1" data-symbol="-">-</div>
+        </div>
+        <div class="row"> <!--Row 1 2 3 * -->
+            <div id="one" class="btn btn-secondary m-1" data-number="1">1</div>
+            <div id="two" class="btn btn-secondary m-1" data-number="2">2</div>
+            <div id="three" class="btn btn-secondary m-1" data-number="3">3</div>
+            <div id="times" class="btn btn-secondary m-1" data-symbol="*">*</div>
+        </div>
+        <div class="row"> <!--Row 0 . = / -->
+            <div id="zero" class="btn btn-secondary m-1" data-number="0">0</div>
+            <div id="dot" class="btn btn-secondary m-1" data-number=".">.</div>
+            <div id="equals" class="btn btn-secondary m-1" data-symbol="=">=</div>
+            <div id="divide" class="btn btn-secondary m-1" data-symbol="/">/</div>
+        </div>
     </div>
     <div id="history">
         <h2 class="m-4">History</h2>
