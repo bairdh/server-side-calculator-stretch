@@ -4,7 +4,7 @@
 A basic calculator that can do addition, subtraction, multiplication, and division. The client side takes in the input values and makes an AJAX POST request to the server side which does all the calculations and saves the data in an array. After the client sides POST request it makes a GET request to receive the calculations and answers from the server and then displays it on the DOM.
 
 ---
-![base mode interface](images/baseMode.png)
+![base mode interface](images/stretchGoal_interface.gif)
 ---
 
 ### Steps
