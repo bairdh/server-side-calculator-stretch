@@ -1,7 +1,7 @@
 
 $(document).ready(readyNow);
 
-let totalNum;
+let totalNum = '';
 
 // creating object to send to sever
 let calculations = {
@@ -11,7 +11,6 @@ let calculations = {
     total: '',
     history: []
 }
-
 
 function readyNow(){
     // on click =
@@ -45,11 +44,13 @@ function readyNow(){
 // getting the value of the second input and making an object from the 
 // inputs and symbol to send to the server side with an AJAX call
 function sendInputs(){
-    calculations.second = $('#secondNumber').val();
+    calculations.second = totalNum.slice(totalNum.lastIndexOf(calculations.symbol + 1));
     
+
+
+
     //clearing inputs 
-    $('#firstNumber').val('');
-    $('#secondNumber').val('');
+    $('#number').val('');
    
     // making a POST request to send data to server
     $.ajax({
@@ -68,7 +69,7 @@ function sendInputs(){
     })
 
     console.log(calculations);
-
+    
     clearInputs();
 }
 
@@ -89,16 +90,12 @@ function getAnswer(){
 
 // clears the inputs and zeros out the number and symbol values
 function clearInputs(){
-    $('#firstNumber').val('');
-    $('#secondNumber').val('');
+    $('#number').val('');
 
     calculations.first = '';
     calculations.second = '';
     calculations.symbol = '';
-
-    console.log(`IN clearInputs ${calculations.total}`);
-    console.log(`first clearInputs ${$('#firstNumber').val()}`);
-    console.log(`second clearInputs ${$('#secondNumber').val()}`);
+    totalNum = '';
 }
 
 // displays on DOM
@@ -107,33 +104,28 @@ function displayOnDOM(history){
     if(history.length >= 1){
         $('#answerH2').text(history[history.length - 1].total);
     }
-
     for(let line of history){
         $('#historyDiv').append(`</p class="historyP m-3">${line.history}</p>`)
     }
 }
 
 function collectNumbers(){
-    if(totalNum === undefined || totalNum === ''){
-        totalNum = '';
-    }
     totalNum += this.getAttribute('data-number');
-
-    if (calculations.symbol === ''){
-        $('#firstNumber').val(totalNum);
-    }
-    else if (calculations.symbol !== ''){
-        $('#secondNumber').val(totalNum);
-    }
+    $('#number').val(totalNum);
 }
 
 function setSymbol(){
     symbol = this.getAttribute('data-symbol');
 
-    calculations.first = $('#firstNumber').val();
-    calculations.symbol = symbol;
+    if(calculations.symbol === ''){
+        calculations.first = $('#number').val();
+        calculations.symbol = symbol;
+        totalNum += symbol;
+        $('#number').val(totalNum);
+    }
 
-    totalNum = '';
+
+    
 }
 
 // [x] have one number
@@ -143,3 +135,4 @@ function setSymbol(){
 // [x] add nums as clicked
 // [x] on click of = add second num total to obj
 // [x] then send obj off
+
