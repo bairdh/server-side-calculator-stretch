@@ -16,56 +16,57 @@
 
 </head>
 <body>
-    <header>
-        <h1 class="m-4">Calculator</h1>
-        <div id="error" class="alert alert-danger alert-dismissible fade collapse mx-5" role="alert">
-            <strong>ERROR!</strong><p id="errorMessage"> You must have two numbers and a symbol!</p>
-            <button type="button" class="close alert-close" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div> <!-- end error div -->
-    </header>
-    <div id="input" class="m-3">
-        <input type="text" id="number" placeholder="Input" readonly>
-        <button id="clearBtn" class="btn btn-secondary">C</button>
-        <button id="clearAllBtn" class="btn btn-secondary">AC</button>
-    </div> <!-- end input div -->
-    <div id="answerDiv">
-        <h2 id="answerH2" class="m-4">
-            <!-- populated by Jquery -->
-        </h2>
-    </div> <!-- end answerDiv -->
-    <div id="numButtons" class="m-5">
-        <div class="row"> <!--Row 7 8 9 + -->
-            <div id="seven" class="btn btn-secondary m-1" data-number="7">7</div>
-            <div id="eight" class="btn btn-secondary m-1" data-number="8">8</div>
-            <div id="nine" class="btn btn-secondary m-1" data-number="9">9</div>
-            <div id="plus" class="btn btn-secondary m-1" data-symbol="+">+</div>
-        </div> <!-- end row -->
-        <div class="row"> <!--Row 4 5 6 - -->
-            <div id="four" class="btn btn-secondary m-1" data-number="4">4</div>
-            <div id="five" class="btn btn-secondary m-1" data-number="5">5</div>
-            <div id="six" class="btn btn-secondary m-1" data-number="6">6</div>
-            <div id="minus" class="btn btn-secondary m-1" data-symbol="-">-</div>
-        </div> <!-- end row -->
-        <div class="row"> <!--Row 1 2 3 * -->
-            <div id="one" class="btn btn-secondary m-1" data-number="1">1</div>
-            <div id="two" class="btn btn-secondary m-1" data-number="2">2</div>
-            <div id="three" class="btn btn-secondary m-1" data-number="3">3</div>
-            <div id="times" class="btn btn-secondary m-1" data-symbol="*">*</div>
-        </div> <!-- end row -->
-        <div class="row"> <!--Row 0 . = / -->
-            <div id="zero" class="btn btn-secondary m-1" data-number="0">0</div>
-            <div id="dot" class="btn btn-secondary m-1" data-number=".">.</div>
-            <div id="equals" class="btn btn-secondary m-1" data-symbol="=">=</div>
-            <div id="divide" class="btn btn-secondary m-1" data-symbol="/">/</div>
-        </div> <!-- end row -->
-    </div> <!-- end numButtons div -->
-    <div id="history">
-        <h2 class="m-4">History</h2>
-        <div id="historyDiv" class="m-3">
-            <!-- populated by Jquery -->
-        </div> <!-- end historyDiv -->
-    </div> <!-- end history div -->
+    <div id="error" class="alert alert-danger alert-dismissible fade collapse mx-5" role="alert">
+        <strong>ERROR!</strong><p id="errorMessage"> You must have two numbers and a symbol!</p>
+        <button type="button" class="close alert-close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div> <!-- end error div -->
+    <div id="container" class="row">
+        <div id="calculator" class="col-sm-5">
+            <header>
+            <h1 class="m-4">Calculator</h1>
+        </header>
+        <div id="input" class="m-3">
+            <input type="text" id="number" placeholder="Input" readonly>
+            <button id="clearBtn" class="btn btn-secondary">C</button>
+            <button id="clearAllBtn" class="btn btn-secondary">AC</button>
+        </div> <!-- end input div -->
+        <div id="numButtons" class="mb-5">
+            <div class="row"> <!--Row 7 8 9 + -->
+                <div id="seven" class="btn btn-secondary m-1" data-number="7">7</div>
+                <div id="eight" class="btn btn-secondary m-1" data-number="8">8</div>
+                <div id="nine" class="btn btn-secondary m-1" data-number="9">9</div>
+                <div id="plus" class="btn btn-secondary m-1" data-symbol="+">+</div>
+            </div> <!-- end row -->
+            <div class="row"> <!--Row 4 5 6 - -->
+                <div id="four" class="btn btn-secondary m-1" data-number="4">4</div>
+                <div id="five" class="btn btn-secondary m-1" data-number="5">5</div>
+                <div id="six" class="btn btn-secondary m-1" data-number="6">6</div>
+                <div id="minus" class="btn btn-secondary m-1" data-symbol="-">-</div>
+            </div> <!-- end row -->
+            <div class="row"> <!--Row 1 2 3 * -->
+                <div id="one" class="btn btn-secondary m-1" data-number="1">1</div>
+                <div id="two" class="btn btn-secondary m-1" data-number="2">2</div>
+                <div id="three" class="btn btn-secondary m-1" data-number="3">3</div>
+                <div id="times" class="btn btn-secondary m-1" data-symbol="*">*</div>
+            </div> <!-- end row -->
+            <div class="row"> <!--Row 0 . = / -->
+                <div id="zero" class="btn btn-secondary m-1" data-number="0">0</div>
+                <div id="dot" class="btn btn-secondary m-1" data-number=".">.</div>
+                <div id="equals" class="btn btn-secondary m-1" data-symbol="=">=</div>
+                <div id="divide" class="btn btn-secondary m-1" data-symbol="/">/</div>
+            </div> <!-- end row -->
+        </div> <!-- end numButtons div -->
+        </div> <!-- end calculator div -->
+        
+        <div id="history" class="col-sm-5">
+            <h2 class="m-4 text-center">History</h2>
+            <div id="historyDiv" class="mx-4 mb-5">
+                <!-- populated by Jquery -->
+            </div> <!-- end historyDiv -->
+        </div> <!-- end history div -->
+    </div> <!-- end container div -->
+    
 </body>
 </html>

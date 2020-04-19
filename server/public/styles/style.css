@@ -1,3 +1,7 @@
+@font-face {
+    font-family: calculator;
+     src: url('../vendors/cursed-timer-ulil-font/CursedTimerUlil-Aznm.ttf')}
+
 #numButtons{
     font-family: monospace;
 }
@@ -18,3 +22,41 @@
 #symbolDiv{
     display: inline-block;
 }
+
+.historyP:hover{
+    background-color: lightgray;
+}
+
+#calculator{
+    border: 1px solid rgb(148, 148, 150);
+    margin: 5% auto;
+    max-width: 383px;
+    background-color: rgb(216, 216, 218);
+    border-radius: .3em;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.8), 0 5px 20px 0 rgba(0, 0, 0, 0.19);
+    font-family: calculator;
+}
+
+#numButtons{
+    margin: 15% 0% 1% 24%;
+    padding-bottom: 0;
+    font-family: calculator;
+}
+
+#error{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#history{
+    border: 1px solid black;
+    max-width: 380px;
+    margin: 5% auto;
+    border-radius: .3em;
+    background-color: rgba(216, 216, 218, 0.719);
+}
+
+#history h2{
+    text-decoration: underline;
+}
+

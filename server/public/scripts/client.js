@@ -14,7 +14,7 @@ let calculations = {
 
 function readyNow(){
 
-    $('header').on('click', '.alert-close', function(){
+    $('#error').on('click', '.alert-close', function(){
         $(this).parent().hide();
     })
 
@@ -45,6 +45,8 @@ function readyNow(){
     $('#minus').on('click', setSymbol);
     $('#times').on('click', setSymbol);
     $('#divide').on('click', setSymbol);
+
+    $('#historyDiv').on('click', '.historyP', rerun);
 
     getAnswer();
 }
@@ -129,7 +131,7 @@ function clearInputs(){
 function displayOnDOM(history){
     $('#historyDiv').empty();
     if(history.length >= 1){
-        $('#answerH2').text(history[history.length - 1].total);
+        $('#number').val(history[history.length - 1].total);
     }
     for(let line of history){
         $('#historyDiv').append(`</p class="historyP m-3">${line.history}</p>`)
@@ -159,13 +161,22 @@ function clearHistory(){
 
     }).then(function(response){
         console.log(`DELETE: ${response}`);
-        $('#answerH2').text('');
         getAnswer();        
     }).catch(function(err){
         alert(`Error! check console.`);
         console.log(err);
         
     })
+}
+
+function rerun(){
+    let equation = this.text();
+    let answer = equation.slice(equation.indexOf('=') + 1);
+
+    $('#number').val(equation);
+
+    console.log(`In rerun`);
+    
 }
 
 // [x] have one number
