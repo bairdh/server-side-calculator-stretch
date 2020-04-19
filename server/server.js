@@ -11,6 +11,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 let history = [];
 
+function emptyHistory(){
+    history = [];
+}
+
 
 
 app.post('/calculations', (req, res) =>{
@@ -23,6 +27,10 @@ app.get('/calculations', (req, res) =>{
     res.send(history);    
 });
 
+app.delete('/calculations', (req, res) =>{
+    emptyHistory();
+    res.sendStatus(202);
+});
 
 // sever out static files
 app.use(express.static('server/public'));

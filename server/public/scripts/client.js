@@ -18,6 +18,9 @@ function readyNow(){
         $(this).parent().hide();
     })
 
+    // on click ac clear history
+    $('#clearAllBtn').on('click', clearHistory);
+
     // on click =
     $('#equals').on('click', sendInputs);
 
@@ -48,11 +51,9 @@ function readyNow(){
 
 // getting the value of the second input and making an object from the 
 // inputs and symbol to send to the server side with an AJAX call
-function sendInputs(){
-    console.log(calculations.first);
-
-    let secondNum = totalNum.slice(totalNum.lastIndexOf(calculations.symbol + 1));
-
+function sendInputs(){    
+    let secondNum = totalNum.slice(totalNum.indexOf(calculations.symbol) + 1);
+     
     if(secondNum === calculations.symbol){
         calculations.second = '';
     }
@@ -95,10 +96,7 @@ function sendInputs(){
         alert(`ERROR! see console`);
         console.log(err);
         
-    })
-
-    console.log(calculations);
-    
+    })    
     clearInputs();
 }
 
@@ -154,6 +152,21 @@ function setSymbol(){
     }
 }
 
+function clearHistory(){
+    $.ajax({
+        url:'/calculations',
+        method: 'delete',
+
+    }).then(function(response){
+        console.log(`DELETE: ${response}`);
+        $('#answerH2').text('');
+        getAnswer();        
+    }).catch(function(err){
+        alert(`Error! check console.`);
+        console.log(err);
+        
+    })
+}
 
 // [x] have one number
 // [x] add nums as clicked
