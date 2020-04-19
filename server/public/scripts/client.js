@@ -13,6 +13,11 @@ let calculations = {
 }
 
 function readyNow(){
+
+    $('header').on('click', '.alert-close', function(){
+        $(this).parent().hide();
+    })
+
     // on click =
     $('#equals').on('click', sendInputs);
 
@@ -44,10 +49,34 @@ function readyNow(){
 // getting the value of the second input and making an object from the 
 // inputs and symbol to send to the server side with an AJAX call
 function sendInputs(){
-    calculations.second = totalNum.slice(totalNum.lastIndexOf(calculations.symbol + 1));
+    console.log(calculations.first);
+
+    let secondNum = totalNum.slice(totalNum.lastIndexOf(calculations.symbol + 1));
+
+    if(secondNum === calculations.symbol){
+        calculations.second = '';
+    }
+    else{
+        calculations.second = secondNum;
+    }
     
+    
+    if(calculations.first === '' || calculations.symbol === '' || calculations.second === ''){
+        if(calculations.first === '' ){
+            $('#errorMessage').text(`Try again you miss putting a number in before the hitting =`)
+        }
+        if(calculations.second === ''){
+            $('#errorMessage').text(`Try again you miss putting a second number in before the hitting equals.`)
+        }
+        if(calculations.symbol === ''){
+            $('#errorMessage').text(`Try again you didn't have an operator`)
+        }
 
+        $('#error').addClass('show').show();
+        clearInputs();
+        return;
 
+    }
 
     //clearing inputs 
     $('#number').val('');
@@ -123,10 +152,8 @@ function setSymbol(){
         totalNum += symbol;
         $('#number').val(totalNum);
     }
-
-
-    
 }
+
 
 // [x] have one number
 // [x] add nums as clicked
